@@ -9,7 +9,7 @@ export const getAllBeers = async (
 ) => {
   const searchFilter = query ? `&& name match $query` : ''
   const ALL_BEERS_QUERY = defineQuery(`
-    *[_type == "beer" && ($filter == 'all' || category->slug.current == $filter) ${searchFilter}] | order(name asc) [$paginationStart...$paginationEnd] {
+    *[_type == "beer" && ($filter == 'all' || style->slug.current == $filter) ${searchFilter}] | order(name asc) [$paginationStart...$paginationEnd] {
       _id,
       name,
       "slug": slug.current,

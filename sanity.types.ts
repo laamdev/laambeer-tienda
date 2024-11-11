@@ -625,16 +625,83 @@ export type ALL_DISHES_QUERYResult = Array<{
 
 // Source: ./src/sanity/lib/taproom/getAllTaps.ts
 // Variable: ALL_TAPS_QUERY
-// Query: *[_type == "tap"] | order(tapNumber asc) {      _id,      tapNumber,      beerName,      breweryName,      beerStyle,      abv,      halfPintPrice,      pintPrice    }
+// Query: *[_type == "tap"] | order(order asc) {      _id,      _updatedAt,      order,      name,      "brewery": brewery->,      "style": style->,      abv,      halfPintPrice,      pintPrice,      isCoreRange    }
 export type ALL_TAPS_QUERYResult = Array<{
   _id: string
-  tapNumber: null
-  beerName: null
-  breweryName: null
-  beerStyle: null
+  _updatedAt: string
+  order: number | null
+  name: string | null
+  brewery: {
+    _id: string
+    _type: 'brewery'
+    _createdAt: string
+    _updatedAt: string
+    _rev: string
+    name?: string
+    slug?: Slug
+    location?: string
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>
+        text?: string
+        _type: 'span'
+        _key: string
+      }>
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+      listItem?: 'bullet' | 'number'
+      markDefs?: Array<{
+        href?: string
+        _type: 'link'
+        _key: string
+      }>
+      level?: number
+      _type: 'block'
+      _key: string
+    }>
+    logo?: {
+      asset?: {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      }
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      _type: 'image'
+    }
+  } | null
+  style: {
+    _id: string
+    _type: 'style'
+    _createdAt: string
+    _updatedAt: string
+    _rev: string
+    name?: string
+    slug?: Slug
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>
+        text?: string
+        _type: 'span'
+        _key: string
+      }>
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+      listItem?: 'bullet' | 'number'
+      markDefs?: Array<{
+        href?: string
+        _type: 'link'
+        _key: string
+      }>
+      level?: number
+      _type: 'block'
+      _key: string
+    }>
+  } | null
   abv: number | null
   halfPintPrice: number | null
   pintPrice: number | null
+  isCoreRange: boolean | null
 }>
 
 // Query TypeMap
@@ -649,6 +716,6 @@ declare module '@sanity/client' {
     '\n    *[_type == "event"] | order(startDate asc)\n  ': ALL_EVENTS_QUERYResult
     '\n    *[_type == "event" && slug.current == $slug][0]{\n      _id,\n      name,\n      "slug": slug.current,\n      "brewery": brewery->{\n        name, \n        "slug": slug.current\n        },\n      "style": style->{\n        name,\n        "slug": slug.current\n      },\n      image,\n      price,\n      abv\n    }\n  ': EVENT_BY_SLUG_QUERYResult
     '\n    *[_type == "food"] | order(order asc) {\n      _id,\n      name,\n      description,\n      price\n    }\n  ': ALL_DISHES_QUERYResult
-    '\n    *[_type == "tap"] | order(tapNumber asc) {\n      _id,\n      tapNumber,\n      beerName,\n      breweryName,\n      beerStyle,\n      abv,\n      halfPintPrice,\n      pintPrice\n    }\n  ': ALL_TAPS_QUERYResult
+    '\n    *[_type == "tap"] | order(order asc) {\n      _id,\n      _updatedAt,\n      order,\n      name,\n      "brewery": brewery->,\n      "style": style->,\n      abv,\n      halfPintPrice,\n      pintPrice,\n      isCoreRange\n    }\n  ': ALL_TAPS_QUERYResult
   }
 }
