@@ -1,12 +1,5 @@
 import '@/app/globals.css'
 import type { Metadata } from 'next'
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
 import localFont from 'next/font/local'
 
 import { Nav } from '@/components/navigation/nav'
@@ -212,26 +205,24 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider dynamic>
-      <html
-        lang='en'
-        className={cn(
-          foundersGrotesk.variable,
-          rightGrotesk.variable,
-          'bg-background font-sans text-foreground antialiased'
-        )}
-      >
-        <body>
-          <main>
-            <Nav />
-            <Header />
-            {children}
-            <Footer />
-          </main>
+    <html
+      lang='en'
+      className={cn(
+        foundersGrotesk.variable,
+        rightGrotesk.variable,
+        'bg-background font-sans text-foreground antialiased'
+      )}
+    >
+      <body>
+        <main>
+          <Nav />
+          <Header />
+          {children}
+          <Footer />
+        </main>
 
-          <SanityLive />
-        </body>
-      </html>
-    </ClerkProvider>
+        <SanityLive />
+      </body>
+    </html>
   )
 }
