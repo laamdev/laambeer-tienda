@@ -43,18 +43,18 @@ export default async function BeersPage({ searchParams }: BeersPageProps) {
           <PageSummary text='Más de 100 referencias en latas y botellas de cervezas artesanales. Cada semana encontrarás en nuestra tienda los úlitmos lanzamientos de las mejores cerveceras nacionales e internacionales.' />
         </div>
 
-        <div className='mt-8'>
+        <div className='mt-8 flex flex-col gap-y-4'>
+          <div className='mx-auto w-full max-w-xl'>
+            <BeerSearch placeholder='Buscar cevezas...' />
+          </div>
+          <div className='mx-auto w-full max-w-2xl'>
+            <StyleFilters filters={stylesList} />
+          </div>
+        </div>
+
+        <div className='mt-4'>
           {beers && beers.length > 0 ? (
             <>
-              <div className='flex flex-col gap-y-4'>
-                <div className='mx-auto w-full max-w-xl'>
-                  <BeerSearch placeholder='Buscar cevezas...' />
-                </div>
-                <div className='mx-auto w-full max-w-2xl'>
-                  <StyleFilters filters={stylesList} />
-                </div>
-              </div>
-
               <div className='mt-12'>
                 <div className='mt-6'>
                   <BeersGrid beers={beers} />
