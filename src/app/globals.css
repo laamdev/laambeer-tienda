@@ -2,20 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --background: 43 95% 52%; */
+    --background: #faf4f0;
+    --foreground: #111111;
+    --card: #eee9e5;
+    --card-foreground: #0a0a0a;
+    --popover: #ffffff;
+    --popover-foreground: #0a0a0a;
+    --primary: #1a1a1a;
+    --primary-foreground: #fafafa;
+    --secondary: #f5f5f5;
+    --secondary-foreground: #0a0a0a;
+    --muted: #f5f5f5;
+    --muted-foreground: #767676;
+    --accent: #f5f5f5;
+    --accent-foreground: #0a0a0a;
+    --destructive: #d93636;
+    --destructive-foreground: #fafafa;
+    --border: ##f5e9e0;
+    --input: ##f5e9e0;
+    --ring: #0a0a0a;
+    --chart-1: #e66b3e;
+    --chart-2: #2b9f63;
+    --chart-3: #3e5f7e;
+    --chart-4: #b3c43b;
+    --chart-5: #e6d11a;
+    --radius: 0.5rem;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-balance leading-none;
+  }
+  ul::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(221, 211, 203, 0.7);
+    backdrop-filter: blur(4px); /* Adjust the blur value as needed */
+    border-radius: inherit;
+  }
+
+  img {
+    @apply rounded-2xl bg-card object-cover object-center;
+  }
+}
+
+@layer components {
+  .tw-animation {
+    @apply transition-all duration-300 ease-in-out;
+  }
 }
