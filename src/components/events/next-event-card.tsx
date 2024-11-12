@@ -50,7 +50,7 @@ export const NextEventCard = ({ event }: NextEventCardProps) => {
             {eventCategory}
           </Badge>
         </div>
-        <div className='px-6 py-4'>
+        <div className='p-4 sm:px-6 sm:py-4'>
           <h2 className='text-2xl font-bold uppercase tracking-tighter'>
             {event.name}
           </h2>

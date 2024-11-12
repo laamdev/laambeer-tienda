@@ -1,10 +1,9 @@
 import { defineQuery } from 'next-sanity'
-
 import { sanityFetch } from '@/sanity/lib/live'
 
 export const getAllStyles = async () => {
   const ALL_STYLES_QUERY = defineQuery(`
-    *[_type == "style"] | order(name asc) {
+    *[_type == "style" && count(*[_type == "beer" && references(^._id)]) > 0] | order(name asc) {
       _id,
       name,
       "slug": slug.current,

@@ -28,7 +28,7 @@ export const UpcomingEventCard = ({ event }: UpcomingEventCardProps) => {
 
   return (
     <div className='flex flex-col items-center rounded-2xl bg-card md:flex-row'>
-      <div className='relative aspect-video w-full rounded-l-2xl rounded-r-none md:w-1/3'>
+      <div className='relative aspect-video w-full rounded-b-none sm:rounded-l-2xl sm:rounded-r-none md:w-1/3'>
         <Image
           src={
             (urlForImage(event.image)
@@ -38,17 +38,17 @@ export const UpcomingEventCard = ({ event }: UpcomingEventCardProps) => {
           }
           alt={event.name ?? 'Evento LamBeer.'}
           layout='fill'
-          className='rounded-l-2xl rounded-r-none'
+          className='rounded-b-none sm:rounded-l-2xl sm:rounded-r-none'
         />
         <Badge variant='secondary' className='absolute left-4 top-4'>
           {eventCategory}
         </Badge>
       </div>
-      <div className='flex w-full flex-col justify-between p-8 leading-normal md:w-2/3'>
-        <h2 className='text-4xl font-bold uppercase tracking-tighter'>
+      <div className='flex w-full flex-col justify-between p-4 leading-normal sm:p-8 md:w-2/3'>
+        <h2 className='text-2xl font-bold uppercase tracking-tighter sm:text-4xl'>
           {event.name}
         </h2>
-        <h3 className='stone-700 text-base font-medium uppercase'>
+        <h3 className='stone-700 text-sm font-medium uppercase sm:text-base'>
           {formattedDate}
         </h3>
         <div className='mt-4'>

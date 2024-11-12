@@ -12,9 +12,8 @@ import {
 import { EmptyState } from '@/components/globals/empty-state'
 import { Badge } from '@/components/ui/badge'
 
-import { getAllTaps } from '@/sanity/lib/taproom/getAllTaps'
+import { getAllTaps } from '@/sanity/lib/bar/getAllTaps'
 import { getFormattedDate } from '@/lib/utils'
-import { Tap } from 'sanity.types'
 
 export const TapsMenu = async () => {
   const taps = await getAllTaps()
@@ -23,7 +22,7 @@ export const TapsMenu = async () => {
     return notFound()
   }
 
-  const latestUpdateTime = taps.reduce((latest: string, tap: Tap) => {
+  const latestUpdateTime = taps.reduce((latest, tap) => {
     return new Date(tap._updatedAt) > new Date(latest) ? tap._updatedAt : latest
   }, taps[0]._updatedAt)
 
@@ -52,9 +51,9 @@ export const TapsMenu = async () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {taps.map((tap: Tap) => (
+            {taps.map((tap: any) => (
               <TableRow key={tap._id}>
-                <TableCell className='text-3xl font-bold uppercase'>
+                <TableCell className='text-lg font-bold uppercase sm:text-3xl'>
                   <div className='flex flex-col'>
                     <span>#0{tap.order}</span>
                     <Badge className='w-fit text-xs'>
@@ -63,22 +62,20 @@ export const TapsMenu = async () => {
                   </div>
                 </TableCell>
                 <TableCell className='flex flex-col'>
-                  <span className='text-3xl font-bold uppercase tracking-tighter'>
+                  <span className='text-lg font-bold uppercase tracking-tighter sm:text-3xl'>
                     {tap.name}
                   </span>
-                  <span className='text-xl font-medium text-zinc-700'>
-                    {/* @ts-expect-error */}
+                  <span className='text-sm font-medium text-zinc-700 sm:text-xl'>
                     {tap.brewery?.name}
                   </span>
                 </TableCell>
-                <TableCell className='text-3xl font-bold uppercase tracking-tighter'>
-                  {/* @ts-expect-error */}
+                <TableCell className='text-lg font-bold uppercase tracking-tighter sm:text-3xl'>
                   {tap.style?.name}
                 </TableCell>
-                <TableCell className='text-3xl font-bold uppercase tracking-tighter'>
+                <TableCell className='text-lg font-bold uppercase tracking-tighter sm:text-3xl'>
                   {tap.abv}%
                 </TableCell>
-                <TableCell className='text-right text-3xl font-bold uppercase tracking-tighter'>
+                <TableCell className='text-right text-lg font-bold uppercase tracking-tighter sm:text-3xl'>
                   {tap.halfPintPrice!.toFixed(2)}€ / €
                   {tap.pintPrice!.toFixed(2)}€
                 </TableCell>

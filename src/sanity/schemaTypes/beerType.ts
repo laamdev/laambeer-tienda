@@ -19,7 +19,8 @@ export const beerType = defineType({
       type: 'slug',
       options: {
         source: 'name'
-      }
+      },
+      validation: Rule => Rule.required()
     }),
     defineField({
       name: 'description',
@@ -39,13 +40,15 @@ export const beerType = defineType({
       name: 'style',
       title: 'Style',
       type: 'reference',
-      to: [{ type: 'style' }]
+      to: [{ type: 'style' }],
+      validation: Rule => Rule.required()
     }),
     defineField({
       name: 'brewery',
       title: 'Brewery',
       type: 'reference',
-      to: [{ type: 'brewery' }]
+      to: [{ type: 'brewery' }],
+      validation: Rule => Rule.required()
     }),
     defineField({
       name: 'price',
@@ -94,6 +97,12 @@ export const beerType = defineType({
       title: 'Is Featured?',
       type: 'boolean',
       description: 'Is this beer featured in the home page?'
+    }),
+    defineField({
+      name: 'isGlutenFree',
+      title: 'Is Gluten Free?',
+      type: 'boolean',
+      description: 'Is this beer gluten free?'
     })
   ],
   preview: {

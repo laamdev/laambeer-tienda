@@ -12,6 +12,8 @@ export const getFeaturedBeers = async () => {
       image,
       "brewery": brewery->name,
       "style": style->name,
+      isGlutenFree,
+      isInStock
     }
   `)
 

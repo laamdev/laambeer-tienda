@@ -14,18 +14,17 @@ export default async function HomePage() {
   return (
     <MaxWidthWrapper>
       <section>
-        <h1 className='text-center font-serif text-[20rem] font-black uppercase leading-none'>
+        <h1 className='text-center font-serif text-9xl font-black uppercase leading-none sm:text-[20rem]'>
           {COMPANY_NAME}
         </h1>
-        <p className='mx-auto max-w-5xl text-center text-3xl'>
+        <p className='mx-auto max-w-5xl text-center text-xl sm:text-3xl'>
           {COMPANY_DESCRIPTION}
         </p>
       </section>
       <section>
-        <SectionHeading title='Novedades en Tienda' isCentered />
-        <div className='mt-12'>
+        <SectionHeading title='Novedades' isCentered />
+        <div className='mt-6 sm:mt-12'>
           {featuredBeers && featuredBeers.length !== 0 ? (
-            // @ts-expect-error
             <BeersGrid beers={featuredBeers} />
           ) : (
             <p className='text-center'>No hay cervezas destacadas</p>

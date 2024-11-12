@@ -8,15 +8,18 @@ import {
 import { MaxWidthWrapper } from '@/components/globals/max-width-wrapper'
 
 import { COMPANY_NAME, CURRENT_YEAR } from '@/lib/constants'
+import { Logo } from '../globals/logo'
 
 export const Footer = () => {
   return (
     <footer className='mt-24 bg-foreground py-12'>
-      <MaxWidthWrapper className='grid grid-cols-4 gap-x-16'>
-        <div className='col-span-1 text-white'>
-          <h3 className='font-serif text-3xl font-bold uppercase text-white'>
-            {COMPANY_NAME}
-          </h3>
+      <MaxWidthWrapper className='grid grid-cols-2 gap-x-16 sm:grid-cols-4'>
+        <div className='col-span-1'>
+          <div>
+            <div className='size-32 stroke-white sm:size-32'>
+              <Logo />
+            </div>
+          </div>
         </div>
         <div className='col-span-1 text-white'>
           <h3 className='font-serif text-3xl font-bold uppercase text-white'>
@@ -72,7 +75,7 @@ export const Footer = () => {
 
       <div className='mt-24 text-center text-zinc-300'>
         <p className='text-sm'>
-          &copy; {CURRENT_YEAR} {COMPANY_NAME}. All Rights Reserverd.
+          &copy; {CURRENT_YEAR} {COMPANY_NAME}. Todos los derechos reservados.
         </p>
       </div>
     </footer>

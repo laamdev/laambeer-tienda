@@ -10,6 +10,7 @@ import { SanityLive } from '@/sanity/lib/live'
 import { Banner } from '@/components/navigation/banner'
 import { Header } from '@/components/navigation/header'
 import { COMPANY_DESCRIPTION, COMPANY_NAME, SITE_URL } from '@/lib/constants'
+import { MenuButton, MobileMenu } from '@/components/navigation/mobile-menu'
 
 const foundersGrotesk = localFont({
   src: [
@@ -215,6 +216,7 @@ export default function RootLayout({
     >
       <body>
         <main>
+          <MobileMenu />
           <Nav />
           <Header />
           {children}

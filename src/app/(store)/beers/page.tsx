@@ -39,11 +39,11 @@ export default async function BeersPage({ searchParams }: BeersPageProps) {
     <MaxWidthWrapper>
       <section>
         <div>
-          <PageTitle title='Cervezas' />
-          <PageSummary text='Más de 100 referencias en latas y botellas de cervezas artesanales. Cada semana encontrarás en nuestra tienda los úlitmos lanzamientos de las mejores cerveceras nacionales e internacionales.' />
+          <PageTitle title='Cervezas' isCentered />
+          <PageSummary text='Más de 100 referencias en latas y botellas de cervezas artesanales. Cada semana encontrarás en nuestra tienda los últimos lanzamientos de las mejores cerveceras nacionales e internacionales.' />
         </div>
 
-        <div className='mt-8 flex flex-col gap-y-4'>
+        <div className='mt-8 flex flex-col gap-y-8'>
           <div className='mx-auto w-full max-w-xl'>
             <BeerSearch placeholder='Buscar cevezas...' />
           </div>

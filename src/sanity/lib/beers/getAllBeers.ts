@@ -20,6 +20,8 @@ export const getAllBeers = async (
       "brewery": brewery->name,
       "style": style->name,
       "styleFilter": style->slug.current,
+      isGlutenFree,
+      isInStock
     }
   `)
 

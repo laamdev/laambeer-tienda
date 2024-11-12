@@ -24,7 +24,7 @@ export const StyleFilters = ({ filters }: { filters: any }) => {
   }
 
   return (
-    <div className='flex flex-wrap items-center gap-2'>
+    <div className='flex flex-wrap items-center justify-center gap-2'>
       <Badge
         variant={filter === 'all' ? 'default' : 'outline'}
         onClick={() => handleFilter('all')}
@@ -33,7 +33,7 @@ export const StyleFilters = ({ filters }: { filters: any }) => {
           'cursor-pointer'
         )}
       >
-        All
+        Todas
       </Badge>
       {filters.map((item: any) => (
         <Badge

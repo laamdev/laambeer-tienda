@@ -15,12 +15,7 @@ export const BeersGrid = ({
   className?: string
 }) => {
   return (
-    <div
-      className={cn(
-        'grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4',
-        className
-      )}
-    >
+    <div className={cn('grid grid-cols-2 gap-8 sm:grid-cols-4', className)}>
       {beers.map((beer: any) => {
         return (
           <AnimatePresence key={beer._id}>

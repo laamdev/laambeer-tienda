@@ -24,19 +24,19 @@ export default async function EventsPage() {
   return (
     <MaxWidthWrapper>
       <div>
-        <PageTitle title='Eventos' />
+        <PageTitle title='Eventos' isCentered />
         <PageSummary text='Catas, presentaciones, meet the brewer y mucho más. Reserva tu plaza para uno de nuestros eventos y disfruta de lo mejor de la escena craft madrileña.' />
       </div>
 
       {upcomingEvents && upcomingEvents.length > 0 && (
         <section className='flex flex-col gap-y-4'>
-          <SectionHeading title='Próximo Evento' />
+          <SectionHeading title='Próximo' isCentered />
           <UpcomingEventCard event={nextEvent} />
         </section>
       )}
 
       <section className='flex flex-col gap-y-4'>
-        <SectionHeading title='Futuros Eventos' />
+        <SectionHeading title='Futuros' isCentered />
         {upcomingEvents && upcomingEvents.length > 0 ? (
           <EventsGrid events={upcomingEvents} />
         ) : (

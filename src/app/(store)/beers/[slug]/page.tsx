@@ -1,17 +1,36 @@
+import { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import { PortableText } from 'next-sanity'
 
 import { MaxWidthWrapper } from '@/components/globals/max-width-wrapper'
 import { SectionHeading } from '@/components/globals/section-heading'
-import { getBeerBySlug } from '@/sanity/lib/beers/gerBeerBySlug'
 
+import { getBeerBySlug } from '@/sanity/lib/beers/gerBeerBySlug'
 import { urlForImage } from '@/sanity/lib/utils'
-import { PortableText } from 'next-sanity'
+import { getFormattedCurrency } from '@/lib/utils'
 
 interface BeerPageProps {
   params: Promise<{
     slug: string
   }>
+}
+
+export async function generateMetadata(
+  props: BeerPageProps
+): Promise<Metadata> {
+  const params = await props.params
+  const { slug } = params
+
+  const beer = await getBeerBySlug(slug)
+
+  if (!beer) {
+    return notFound()
+  }
+
+  return {
+    title: beer.name
+  }
 }
 
 export default async function BeerPage({ params }: BeerPageProps) {
@@ -40,8 +59,12 @@ export default async function BeerPage({ params }: BeerPageProps) {
           />
         </div>
 
-        <section>
+        <section className='mt-4 sm:mt-0'>
           <SectionHeading title={beer.name!} />
+
+          <h3 className='mt-2 text-3xl font-bold text-stone-700'>
+            {getFormattedCurrency(beer.price!)}
+          </h3>
 
           <div className='mt-4 grid gap-2 sm:mt-8 sm:gap-4 md:grid-cols-2'>
             <div>
@@ -64,10 +87,10 @@ export default async function BeerPage({ params }: BeerPageProps) {
 
             <div>
               <p className='text-xs font-medium text-stone-700 sm:text-sm'>
-                Formato
+                {beerFormat}
               </p>
               <p className='text-lg font-semibold tracking-tighter sm:text-xl'>
-                {`${beer?.size} ml (${beerFormat})`}
+                {`${beer?.size} ml`}
               </p>
             </div>
 
