@@ -11,6 +11,7 @@ export const FoodMenu = async () => {
       {dishes && dishes.length !== 0 ? (
         <div className='flex flex-col gap-y-8'>
           {dishes.map(dish => (
+            // @ts-expect-error
             <FoodItem key={dish._id} dish={dish} />
           ))}
         </div>

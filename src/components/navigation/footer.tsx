@@ -52,7 +52,7 @@ export const Footer = () => {
         </div>
         <div className='col-span-1'>
           <h3 className='font-serif text-3xl font-bold uppercase text-white'>
-            Conectar
+            Contáctanos
           </h3>
           <div className='mt-4 flex gap-x-4'>
             <Link href=''>

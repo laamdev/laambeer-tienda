@@ -4,13 +4,15 @@ import { PageTitle } from '@/components/globals/page-title'
 import { StyleFilters } from '@/components/beers/style-filters'
 import { BeerSearch } from '@/components/beers/beer-search'
 import { BeerPagination } from '@/components/beers/beer-pagination'
+import { EmptyState } from '@/components/globals/empty-state'
+import { PageSummary } from '@/components/globals/page-summary'
 
 import { getAllBeers } from '@/sanity/lib/beers/getAllBeers'
 import { getAllStyles } from '@/sanity/lib/beers/getAllStyles'
 import { getBeersCount } from '@/sanity/lib/beers/getBeersCount'
+
 import { BEERS_PER_PAGE } from '@/lib/constants'
-import { EmptyState } from '@/components/globals/empty-state'
-import { PageSummary } from '@/components/globals/page-summary'
+import { Style } from 'sanity.types'
 
 interface BeersPageProps {
   searchParams: Promise<{
@@ -30,7 +32,7 @@ export default async function BeersPage({ searchParams }: BeersPageProps) {
   const beersCount = await getBeersCount()
   const styles = await getAllStyles()
 
-  const stylesList = styles.map(style => ({
+  const stylesList = styles.map((style: Style) => ({
     label: style.name,
     value: style.slug
   }))

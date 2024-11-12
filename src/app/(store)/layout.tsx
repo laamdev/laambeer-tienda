@@ -1,16 +1,16 @@
 import '@/app/globals.css'
+
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 
 import { Nav } from '@/components/navigation/nav'
 import { Footer } from '@/components/navigation/footer'
+import { MobileMenu } from '@/components/navigation/mobile-menu'
+import { Header } from '@/components/navigation/header'
 
 import { cn } from '@/lib/utils'
-import { SanityLive } from '@/sanity/lib/live'
-import { Banner } from '@/components/navigation/banner'
-import { Header } from '@/components/navigation/header'
 import { COMPANY_DESCRIPTION, COMPANY_NAME, SITE_URL } from '@/lib/constants'
-import { MenuButton, MobileMenu } from '@/components/navigation/mobile-menu'
+import { SanityLive } from '@/sanity/lib/live'
 
 const foundersGrotesk = localFont({
   src: [
