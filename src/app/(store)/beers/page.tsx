@@ -1,3 +1,5 @@
+import { Metadata } from 'next'
+
 import { MaxWidthWrapper } from '@/components/globals/max-width-wrapper'
 import { BeersGrid } from '@/components/beers/beers-grid'
 import { PageTitle } from '@/components/globals/page-title'
@@ -10,7 +12,6 @@ import { PageSummary } from '@/components/globals/page-summary'
 import { getAllBeers } from '@/sanity/lib/beers/getAllBeers'
 import { getAllStyles } from '@/sanity/lib/beers/getAllStyles'
 import { getBeersCount } from '@/sanity/lib/beers/getBeersCount'
-
 import { BEERS_PER_PAGE } from '@/lib/constants'
 import { Style } from 'sanity.types'
 
@@ -20,6 +21,10 @@ interface BeersPageProps {
     query: string | null
     page: number
   }>
+}
+
+export const metadata: Metadata = {
+  title: 'Bar'
 }
 
 export default async function BeersPage({ searchParams }: BeersPageProps) {

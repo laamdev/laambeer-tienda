@@ -8,7 +8,7 @@ import { SectionHeading } from '@/components/globals/section-heading'
 import { PageSummary } from '@/components/globals/page-summary'
 
 export const metadata: Metadata = {
-  title: 'Grifos y Comida'
+  title: 'Bar'
 }
 
 export default async function BarPage() {
